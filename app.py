@@ -28,6 +28,7 @@ def recommend(movie):
     return recommended_movies, movie_posters
 
 movies=pk.load(open('movies.pkl','rb')) # its a dataframe
+
 uploaded_file = st.file_uploader("Upload similarity.pkl", type=["pkl"])
 if uploaded_file is not None:
     similarity = pk.load(uploaded_file)
