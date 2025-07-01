@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run app.py
+web: bash -c "git lfs install && git lfs pull && sh setup.sh && streamlit run app.py"

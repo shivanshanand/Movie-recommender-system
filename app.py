@@ -29,13 +29,8 @@ def recommend(movie):
 
 movies=pk.load(open('movies.pkl','rb')) # its a dataframe
 
-uploaded_file = st.file_uploader("Upload similarity.pkl", type=["pkl"])
-if uploaded_file is not None:
-    similarity = pk.load(uploaded_file)
-    # continue running rest of the app only after upload
-else:
-    st.warning("Please upload similarity.pkl file to continue.")
-    st.stop()
+with open("similarity.pkl", "rb") as f:
+    similarity = pk.load(f)
 
 movie_titles = movies['title'].values
 
