@@ -28,11 +28,18 @@ def recommend(movie):
     return recommended_movies, movie_posters
 
 movies=pk.load(open('movies.pkl','rb')) # its a dataframe
-similarity=pk.load(open('similarity.pkl','rb'))
+uploaded_file = st.file_uploader("Upload similarity.pkl", type=["pkl"])
+if uploaded_file is not None:
+    similarity = pk.load(uploaded_file)
+    # continue running rest of the app only after upload
+else:
+    st.warning("Please upload similarity.pkl file to continue.")
+    st.stop()
 
 movie_titles = movies['title'].values
 
 st.title('Movie Recommender System')
+st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wide")
 
 selected_movie=st.selectbox(
     '🎞️ Select a movie to get recommendations:',
