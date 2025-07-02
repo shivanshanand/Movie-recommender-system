@@ -1,3 +1,6 @@
 venv
-#*.pkl
+*.pkl
 __pycache__/
+.env
+*.key
+*.pem
